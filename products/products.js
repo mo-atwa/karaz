@@ -1,0 +1,80 @@
+window.KARAZ_PRODUCTS = [
+  {
+    "id": "alsayad-giraffe-fleece-set",
+    "name": "بيجامة صوف ناعم بطبعة الزرافة للأولاد — الصياد",
+    "category": "baby",
+    "sub": "بيجامات",
+    "type": "بيجامة",
+    "ages": [
+      "0-12m",
+      "1-2y",
+      "3-5y"
+    ],
+    "sizes": [
+      "0–3 شهور",
+      "3–6 شهور",
+      "6–9 شهور",
+      "9–12 شهر",
+      "12–18 شهر",
+      "سنتان",
+      "3 سنوات"
+    ],
+    "colors": [
+      "أخضر"
+    ],
+    "price": null,
+    "oldPrice": null,
+    "images": [
+      "images/alsayad-giraffe-fleece-set/1.webp"
+    ],
+    "description": "طقم بيجامة من الصياد بهودي بسوستة نصفية وجيب أمامي وبنطلون بنقشة أوراق، مع طبعة زرافة لطيفة على الصدر. بخامة 60% قطن و40% بوليستر.",
+    "material": "60% قطن، 40% بوليستر",
+    "buyType": "affiliate",
+    "buyUrl": "https://link.amazon/B0dvgXfFg",
+    "createdAt": "2026-10-25",
+    "featured": true,
+    "set": false,
+    "season": "winter",
+    "hidden": false,
+    "rating": 4.1,
+    "url": "products/baby/alsayad-giraffe-fleece-set.html"
+  },
+  {
+    "id": "andora-offshoulder-dress",
+    "name": "فستان بناتي أوف شولدر بنقشة أسود وأبيض — أندورا",
+    "category": "girls",
+    "sub": "فساتين",
+    "type": "فستان",
+    "ages": [
+      "6-8y"
+    ],
+    "sizes": [
+      "6",
+      "8",
+      "10",
+      "12",
+      "14"
+    ],
+    "colors": [
+      "أسود وأبيض"
+    ],
+    "price": null,
+    "oldPrice": null,
+    "images": [
+      "images/andora-offshoulder-dress/1.webp",
+      "images/andora-offshoulder-dress/2.webp",
+      "images/andora-offshoulder-dress/3.webp"
+    ],
+    "description": "فستان بناتي من أندورا بأكتاف مكشوفة وحمالات رفيعة وقصة A بطول متوسط، بنقشة مطبوعة تعطي إطلالة مرحة وأنيقة في الخروجات والمناسبات الخفيفة.",
+    "material": "بوليستر",
+    "buyType": "affiliate",
+    "buyUrl": "https://link.amazon/B02jd2O62",
+    "createdAt": "2026-10-23",
+    "featured": true,
+    "set": false,
+    "season": "summer",
+    "hidden": false,
+    "rating": 4.2,
+    "url": "products/girls/andora-offshoulder-dress.html"
+  }
+];
