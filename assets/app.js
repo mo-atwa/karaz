@@ -99,6 +99,7 @@ function Footer(){
     <div class="foot-grid">
       <div><a href="#/" class="logo">${logoMark}<span class="logo-text"><b>كرز<span>Karaz</span></b></span></a>
         <p style="margin-top:10px"><b>كرز — حلاوة طفولتهم.. في كل تفصيلة</b></p>
+        <p class="foot-tag">«أناقة تبدأ من الطفولة»</p>
         <p>اختيارات متنوعة من ملابس الأطفال، لتكتشفي ما يناسب طفلك بسهولة.</p>
         ${aff?'<p class="disclosure">بعض الروابط في الموقع هي روابط عمولة؛ قد نحصل على عمولة عند الشراء عبرها دون أي تكلفة إضافية عليكِ.</p>':''}</div>
       <div><h4>تسوّقي</h4><ul>
@@ -264,11 +265,18 @@ function Favorites(){
   return PageHead("المفضلة","المنتجات اللي حفظتيها للرجوع إليها لاحقًا.")+`<div class="container" style="padding:30px 0"><div class="prod-grid">${l.length?l.map(ProductCard).join(""):Empty("لسه ما أضفتيش منتجات للمفضلة. تصفحي الأقسام واضغطي على القلب للحفظ.",true)}</div></div>`;
 }
 function About(){
-  return PageHead("من نحن","كرز.. اختيارات بحب لطفولتهم")+`<div class="container"><div class="prose">
-  <p>كرز Karaz متجر مصري متخصص في عرض ملابس الأطفال للبنات والأولاد والرضع، من عمر شهر إلى 8 سنوات.</p>
-  <p>بنحب التفاصيل الصغيرة اللي بتخلي طفولة أولادنا أجمل، علشان كده بنجمع لك اختيارات متنوعة من ملابس الأطفال تساعدك تكتشفي الإطلالة المناسبة لطفلك بسهولة، مع أقسام منظمة وتجربة تصفح واضحة ومريحة.</p>
-  <h2>شعارنا</h2><p>«حلاوة طفولتهم.. في كل تفصيلة» — «أناقة تبدأ من الطفولة».</p>
-  <p><a class="btn btn-primary" href="#/shop">تصفحي المنتجات</a></p></div></div>`;
+  const imgs=D.products.filter(p=>p.images&&p.images[0]).slice(0,3);
+  const tiles=imgs.map((p,k)=>`<figure class="ab-tile t${k+1}"><img src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy"></figure>`).join("");
+  const art=imgs.length?`<div class="ab-art n${imgs.length}" aria-hidden="false">${tiles}<span class="ab-cherry" aria-hidden="true">${cherry(64)}</span></div>`
+    :`<div class="ab-art empty" aria-hidden="true">${cherry(160)}</div>`;
+  return `<section class="about"><div class="container ab-grid">
+    <div class="ab-text">
+      <span class="ab-eyebrow">من نحن</span>
+      <h1>حلاوة طفولتهم.. في كل تفصيلة 🍒</h1>
+      <p>في كرز، بنحب التفاصيل الصغيرة اللي بتخلي طفولة أولادنا أجمل. علشان كده، بنجمع لكِ اختيارات متنوعة من ملابس البنات والأولاد والبيبي، لتختاري لطفلك إطلالة تناسب ذوقك واحتياجاته بسهولة.</p>
+      <a class="btn btn-primary ab-btn" href="#/shop">تصفحي المنتجات <span aria-hidden="true">←</span></a>
+    </div>${art}
+  </div></section>`;
 }
 function Contact(){
   const c=D.contact, soc=socialLinks();

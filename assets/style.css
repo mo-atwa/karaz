@@ -290,3 +290,31 @@ footer.site-footer{background:#F1F4E6;border-top:1px solid var(--green-soft);pad
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* about */
+.about{background:radial-gradient(circle at 85% 20%,#fff 0,var(--cream) 55%,var(--beige) 100%);padding:56px 0 64px}
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.ab-text{display:grid;gap:14px;justify-items:start}
+.ab-eyebrow{display:inline-block;background:#EAF2E1;color:var(--green);border:1px solid var(--green-soft);font-family:'Cairo';font-weight:700;font-size:.9rem;padding:2px 16px;border-radius:999px}
+.ab-text h1{font-size:clamp(2rem,4.4vw,3.2rem);font-weight:800;line-height:1.3;text-wrap:balance}
+.ab-text p{color:var(--muted);font-size:1.12rem;max-width:30em;line-height:1.9}
+.ab-btn{margin-top:6px;min-height:52px;padding:12px 32px;font-size:1.08rem;gap:10px;box-shadow:0 6px 16px rgba(31,78,95,.22)}
+.ab-art{position:relative;display:grid;gap:14px;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;aspect-ratio:1/1;max-width:520px;width:100%;margin-inline:auto}
+.ab-art.n1{grid-template-columns:1fr;grid-template-rows:1fr}
+.ab-art.n2{grid-template-rows:1fr}
+.ab-tile{margin:0;border-radius:26px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.ab-tile img{width:100%;height:100%;object-fit:cover;object-position:top}
+.ab-tile.t1{grid-row:1/3;background:var(--green-soft)}
+.ab-tile.t2{background:var(--pink-soft)}
+.ab-tile.t3{background:var(--beige)}
+.ab-art.n1 .ab-tile.t1{grid-row:auto}
+.ab-cherry{position:absolute;bottom:-14px;inset-inline-start:-14px;background:var(--warm-white);border-radius:50%;width:84px;height:84px;display:grid;place-items:center;box-shadow:var(--shadow);border:1px solid var(--line)}
+.ab-art.empty{place-items:center;background:var(--green-soft);border-radius:40% 60% 55% 45%/50% 45% 55% 50%;opacity:.7}
+.foot-tag{color:var(--petrol);font-family:'Cairo';font-weight:600;font-size:.95rem}
+@media(max-width:760px){
+  .about{padding:32px 0 48px}
+  .ab-grid{grid-template-columns:1fr}
+  .ab-art{order:-1;max-width:380px}
+}
+
+.badge[hidden]{display:none}
