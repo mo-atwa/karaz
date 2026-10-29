@@ -310,3 +310,12 @@ footer.site-footer{background:#F1F4E6;border-top:1px solid var(--green-soft);pad
 .badge[hidden]{display:none}
 
 @media(max-width:760px){.promo{grid-template-columns:1fr}.promo-img{max-width:320px;order:-1}.ab-art{max-width:420px}}
+
+/* mobile: no breadcrumbs, swipeable category chips */
+@media(max-width:760px){
+  .crumbs{display:none}
+  .page-head{padding:24px 0 18px}
+  .container>.chips{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scroll-padding-inline:16px;scrollbar-width:none;margin-inline:-16px;padding:4px 16px 8px;gap:8px}
+  .container>.chips::-webkit-scrollbar{display:none}
+  .container>.chips .chip{flex:0 0 auto;white-space:nowrap;scroll-snap-align:start}
+}
