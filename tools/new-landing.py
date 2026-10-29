@@ -10,6 +10,7 @@ from pathlib import Path
 from PIL import Image
 
 SITE = Path(__file__).resolve().parent.parent
+SITE_URL = "https://karazkid.vercel.app"
 CATS = {"girls": "ملابس البنات", "boys": "ملابس الأولاد", "baby": "ملابس البيبي"}
 BUY = 'href="{url}" target="_blank" rel="sponsored noopener noreferrer"'
 
@@ -119,6 +120,14 @@ def build(spec):
     if rate: meta["rating"] = rate["value"]
     metajson = json.dumps(meta, ensure_ascii=False, indent=2).replace("</", "<\\/")
 
+    ld = {"@context": "https://schema.org", "@type": "Product", "name": name,
+          "image": [f"{SITE_URL}/{m['path']}" for m in imgs],
+          "description": spec.get("description", spec.get("lead", name)),
+          "category": CATS[cat], "url": f"{SITE_URL}/products/{cat}/{slug}.html"}
+    if spec.get("code"): ld["sku"] = spec["code"]
+    if spec.get("brand_name"): ld["brand"] = {"@type": "Brand", "name": spec["brand_name"]}
+    if spec.get("material"): ld["material"] = spec["material"]
+    ldjson = json.dumps(ld, ensure_ascii=False).replace("</", "<\\/")
     t, tem, tr = spec.get("title", name), spec.get("title_em", ""), spec.get("title_rest", "")
     h1 = f'{e(t)} <em>{e(tem)}</em> {e(tr)}'.replace("<em></em>", "").strip() if tem else e(name)
     ages_note = spec.get("buy_note", "سيتم تحويلك إلى أمازون لإتمام الطلب. تظهر تفاصيل السعر والدفع والتوصيل هناك، وتخضع لسياسات أمازون.")
@@ -134,6 +143,16 @@ def build(spec):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="{SITE_URL}/products/{cat}/{slug}.html">
+<meta property="og:type" content="product">
+<meta property="og:locale" content="ar_EG">
+<meta property="og:site_name" content="كرز Karaz">
+<meta property="og:title" content="{e(spec.get("page_title", name))} | كرز">
+<meta property="og:description" content="{e(spec.get("meta_description", spec.get("lead", name)))}">
+<meta property="og:url" content="{SITE_URL}/products/{cat}/{slug}.html">
+<meta property="og:image" content="{SITE_URL}/{imgs[0]["path"]}">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{ldjson}</script>
 <link rel="stylesheet" href="../../assets/landing.css">
 </head>
 <body>
