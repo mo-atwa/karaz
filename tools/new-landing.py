@@ -133,7 +133,7 @@ def build(spec):
 <meta name="theme-color" content="#1F4E5F">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/landing.css">
 </head>
 <body>
@@ -167,7 +167,7 @@ def build(spec):
     <div class="gal{" single" if single else ""}">
       {"" if single else f'<div class="thumbs" aria-label="صور المنتج">{thumbs}</div>'}
       <div class="stage">{f'<span class="tag">{e(spec["brand"])}</span>' if spec.get("brand") else ""}
-        <img id="stageImg" src="../../{imgs[0]["path"]}" alt="{e(imgs[0]["alt"])}" width="{imgs[0]["w"]}" height="{imgs[0]["h"]}"></div>
+        <img id="stageImg" fetchpriority="high" decoding="async" src="../../{imgs[0]["path"]}" alt="{e(imgs[0]["alt"])}" width="{imgs[0]["w"]}" height="{imgs[0]["h"]}"></div>
     </div>
   </section>
   {band}
