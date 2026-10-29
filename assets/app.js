@@ -115,10 +115,10 @@ function Footer(){
   </div></footer>`;
 }
 function ProductCard(p){
-  const img = p.images&&p.images[0] ? `<img src="${esc(p.images[0])}" alt="${esc(p.name)} — ${esc(catName(p.category))}" loading="lazy" width="400" height="400">` : garment("tee");
+  const img = p.images&&p.images[0] ? `<img src="${esc(p.images[0])}" alt="${esc(p.name)} — ${esc(catName(p.category))}" loading="lazy" decoding="async" width="600" height="800">` : garment("tee");
   const isFav = favs.has(p.id);
   const ages = (p.ages||[]).map(a=>(AGES.find(x=>x.key===a)||{}).label).filter(Boolean);
-  const meta = p.sizes&&p.sizes.length ? "المقاسات: "+p.sizes.join("، ") : ages.join(" · ");
+  const meta = p.sizes&&p.sizes.length ? (p.sizes.length>4 ? p.sizes.length.toLocaleString("ar-EG")+" مقاسات متاحة" : "المقاسات: "+p.sizes.join("، ")) : ages.join(" · ");
   return `<article class="prod-card">
     <a href="${esc(p.url||"#/shop")}" class="prod-img" aria-label="${esc(p.name)}">${img}</a>
     ${hasOffer(p)?`<span class="tag-off">خصم ${offPct(p)}٪</span>`:''}
@@ -127,16 +127,21 @@ function ProductCard(p){
       <span class="prod-cat">${catShort(p.category)}${p.code?` · <span class="prod-code">${esc(p.code)}</span>`:""}</span>
       <h3><a href="${esc(p.url||"#/shop")}">${esc(p.name)}</a></h3>
       ${meta?`<span class="prod-meta">${esc(meta)}</span>`:''}
-      ${p.rating?`<span class="stars" aria-label="التقييم ${p.rating} من 5">${"★".repeat(Math.round(p.rating))}</span>`:''}
+      ${p.rating?`<span class="stars" aria-label="التقييم ${p.rating} من 5">${"★".repeat(Math.round(p.rating))} <small>${p.rating}</small></span>`:''}
       ${p.price?`<div class="price">${money(p.price)}${hasOffer(p)?`<del>${money(p.oldPrice)}</del>`:''}</div>`:''}
       <a class="btn btn-ghost btn-sm" href="${esc(p.url||"#/shop")}">عرض التفاصيل</a>
     </div></article>`;
 }
-function Empty(msg,withBtn){
-  return `<div class="empty">${cherry(70)}<p>${msg}</p>${withBtn?'<a class="btn btn-primary btn-sm" href="#/shop">تصفحي كل الأقسام</a>':''}</div>`;
+function Empty(msg,withBtn,btnText,btnHref){
+  return `<div class="empty">${cherry(70)}<p>${msg}</p>${withBtn?`<a class="btn btn-primary btn-sm" href="${btnHref||"#/shop"}">${btnText||"تصفحي كل الأقسام"}</a>`:''}</div>`;
+}
+function MoreBox(cat){
+  const others=Object.entries(CATS).filter(([k])=>k!==cat).map(([k,c])=>`<a class="chip" href="#/shop?cat=${k}">${c.name}</a>`).join("");
+  return `<aside class="more-box"><h3>اكتشفي أقسامًا أخرى في كرز</h3><p>تابعينا لمعرفة الجديد، وتصفّحي باقي الأقسام في الوقت الحالي.</p><div class="chips">${others}<a class="chip" href="#/shop?offers=1">العروض والخصومات</a></div></aside>`;
 }
 function ProductGrid(list,cls=""){
-  return `<div class="prod-grid ${cls}">${list.length?list.map(ProductCard).join(""):Empty(loaded?"جاري تجهيز المنتجات.. تابعينا قريبًا لاكتشاف الجديد 🍒":"جاري تحميل المنتجات..")}</div>`;
+  const few=list.length>0&&list.length<4&&!cls;
+  return `<div class="prod-grid ${cls}${few?" few":""}"${few?` style="--n:${list.length}"`:""}>${list.length?list.map(ProductCard).join(""):Empty(loaded?"جاري تجهيز المنتجات.. تابعينا قريبًا لاكتشاف الجديد 🍒":"جاري تحميل المنتجات..")}</div>`;
 }
 function PageHead(title,desc,crumb){
   return `<div class="page-head"><div class="container"><div class="crumbs"><a href="#/">الرئيسية</a> ‹ ${crumb||title}</div><h1>${title}</h1>${desc?`<p>${desc}</p>`:''}</div></div>`;
@@ -157,7 +162,7 @@ function Home(){
       <a class="btn btn-primary btn-sm" href="${c.href}">${c.cta}</a></div></article>`).join("");
   const featured = D.products.filter(p=>p.featured).slice(0,4);
   const featList = featured.length?featured:D.products.slice(0,4);
-  const fresh = [...D.products].filter(p=>p.createdAt).sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)).slice(0,4);
+  const fresh = [...D.products].filter(p=>p.createdAt&&!featList.includes(p)).sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)).slice(0,4);
   const tips = D.articles.length?`<section class="block"><div class="container"><div class="sec-head"><h2>نصائح صغيرة.. لراحة أكبر</h2><p>محتوى بسيط يساعدك في اختيار الأنسب لطفلك.</p></div>
     <div class="tips-grid">${D.articles.slice(0,4).map(a=>`<a class="tip" href="${esc(a.url)}"><div class="tip-img">${a.image?`<img src="${esc(a.image)}" alt="${esc(a.title)}" loading="lazy">`:''}</div><div class="b"><h3>${esc(a.title)}</h3></div></a>`).join("")}</div></div></section>`:"";
   return `
@@ -220,8 +225,8 @@ function filterProducts(q){
   if(q.size) l=l.filter(p=>(p.sizes||[]).includes(q.size));
   if(q.color) l=l.filter(p=>(p.colors||[]).includes(q.color));
   if(q.type) l=l.filter(p=>p.type===q.type);
-  if(q.min) l=l.filter(p=>p.price>=+q.min);
-  if(q.max) l=l.filter(p=>p.price<=+q.max);
+  if(q.min) l=l.filter(p=>p.price!=null&&p.price>=+q.min);
+  if(q.max) l=l.filter(p=>p.price!=null&&p.price<=+q.max);
   if(q.offers) l=l.filter(hasOffer);
   if(q.sets) l=l.filter(p=>p.set);
   if(q.season) l=l.filter(p=>p.season);
@@ -250,13 +255,13 @@ function Shop(q){
       ${sel("f_size","المقاس",uniq("sizes",true).map(v=>({v,t:v})),q.size)}
       ${sel("f_color","اللون",uniq("colors",true).map(v=>({v,t:v})),q.color)}
       ${sel("f_type","نوع الملابس",uniq("type").map(v=>({v,t:v})),q.type)}
-      <div class="f-group"><span class="label t" style="display:block;font-weight:700;font-size:.9rem;color:var(--petrol)">السعر (ج.م)</span><div class="f-row"><input type="number" min="0" id="f_min" placeholder="من" value="${esc(q.min||"")}" aria-label="أقل سعر"><input type="number" min="0" id="f_max" placeholder="إلى" value="${esc(q.max||"")}" aria-label="أعلى سعر"></div></div>
+      ${D.products.some(p=>p.price!=null)?`<div class="f-group"><span class="label t" style="display:block;font-weight:700;font-size:.9rem;color:var(--petrol)">السعر (ج.م)</span><div class="f-row"><input type="number" min="0" id="f_min" placeholder="من" value="${esc(q.min||"")}" aria-label="أقل سعر"><input type="number" min="0" id="f_max" placeholder="إلى" value="${esc(q.max||"")}" aria-label="أعلى سعر"></div></div>`:""}
       <label class="f-check"><input type="checkbox" id="f_offers" ${q.offers?'checked':''}> المنتجات التي عليها عروض</label>
       <div class="f-actions"><button class="btn btn-primary btn-sm" type="submit">تطبيق الفلاتر</button><button class="btn btn-ghost btn-sm" type="button" id="clearFilters">مسح الفلاتر</button></div>
     </form></div>
     <div><p class="result-count" aria-live="polite">${res.length?`عدد المنتجات: ${res.length.toLocaleString("ar-EG")}`:''}</p>
-    <div class="prod-grid list">${res.length?res.map(ProductCard).join(""):
-      Empty(!loaded?"جاري تحميل المنتجات..":D.products.length?"ملقيناش منتجات مطابقة لاختياراتك. جرّبي تغيير البحث أو الفلاتر.":"جاري تجهيز المنتجات.. تابعينا قريبًا لاكتشاف الجديد 🍒",true)}</div></div>
+    <div class="prod-grid list">${res.length?res.map(ProductCard).join("")+(res.length<=2?MoreBox(q.cat):""):
+      (!loaded?Empty("جاري تحميل المنتجات.."):D.products.length?Empty("ملقيناش منتجات مطابقة لاختياراتك. جرّبي تغيير البحث أو الفلاتر.",true,"مسح الفلاتر","#/shop"):Empty("جاري تجهيز المنتجات.. تابعينا قريبًا لاكتشاف الجديد 🍒",true))}</div></div>
   </div></div>`;
 }
 function Favorites(){
