@@ -99,7 +99,6 @@ function Footer(){
     <div class="foot-grid">
       <div><a href="#/" class="logo">${logoMark}<span class="logo-text"><b>كرز<span>Karaz</span></b></span></a>
         <p style="margin-top:10px"><b>كرز — حلاوة طفولتهم.. في كل تفصيلة</b></p>
-        <p class="foot-tag">«أناقة تبدأ من الطفولة»</p>
         <p>اختيارات متنوعة من ملابس الأطفال، لتكتشفي ما يناسب طفلك بسهولة.</p>
         ${aff?'<p class="disclosure">بعض الروابط في الموقع هي روابط عمولة؛ قد نحصل على عمولة عند الشراء عبرها دون أي تكلفة إضافية عليكِ.</p>':''}</div>
       <div><h4>تسوّقي</h4><ul>
@@ -152,7 +151,7 @@ function Home(){
     ...Object.entries(CATS).map(([k,c])=>({key:k,...c,href:`#/shop?cat=${k}`})),
     ...EXTRA
   ].map(c=>`<article class="cat-card"><a class="cat-media" href="${c.href}" style="background:${c.bg}" aria-label="${c.name}">
-      ${c.image?`<img src="${esc(c.image)}" alt="${esc(c.name)}" loading="lazy">`:catArt(c.key)}</a>
+      ${c.image?`<img src="${esc(c.image)}" alt="${esc(c.name)}" loading="lazy" width="450" height="450">`:catArt(c.key)}</a>
     <div class="cat-body"><h3>${c.name}</h3><p>${c.tagline}</p>
       ${c.subs.length?`<div class="cat-subs">${c.subs.slice(0,4).map(s=>`<a href="${c.href}${CATS[c.key]?`&sub=${encodeURIComponent(s)}`:''}">${s}</a>`).join("")}</div>`:''}
       <a class="btn btn-primary btn-sm" href="${c.href}">${c.cta}</a></div></article>`).join("");
@@ -181,9 +180,9 @@ function Home(){
   ${fresh.length?`<section class="block"><div class="container"><div class="sec-head"><h2>وصل حديثًا إلى كرز</h2><p>أحدث الاختيارات الصغيرة اللي هتحبي تكتشفيها.</p></div>${ProductGrid(fresh)}
     <p style="text-align:center;margin-top:22px"><a class="btn btn-ghost" href="#/shop?sort=new">شاهدي كل المنتجات الجديدة</a></p></div></section>`:''}
   <section class="block ${fresh.length?'alt':''}"><div class="container"><div class="promo">
-    <span class="deco d1">${cherry(90)}</span><span class="deco d2">${cherry(90)}</span>
-    <h2>اختيارات حلوة.. وعروض تستاهل</h2><p>تابعي المنتجات المتاحة والعروض الحالية، واختاري اللي يناسب ذوقك وميزانيتك.</p>
-    <a class="btn btn-primary" href="#/shop?offers=1">تصفحي العروض</a></div></div></section>
+    <div class="promo-text"><h2>اختيارات حلوة.. وعروض تستاهل</h2><p>تابعي المنتجات المتاحة والعروض الحالية، واختاري اللي يناسب ذوقك وميزانيتك.</p>
+    <a class="btn btn-primary" href="#/shop?offers=1">تصفحي العروض</a></div>
+    <img class="promo-img" src="images/site/promo-offers.webp" alt="فستان وتيشيرت أطفال على علاقات مع بطاقة عرض" loading="lazy" width="450" height="450"></div></div></section>
   <section class="block"><div class="container"><div class="sec-head"><h2>لكل مرحلة حكاية</h2><p>اختاري حسب عمر طفلك.</p></div>
     <div class="age-grid">${AGES.map(a=>`<a class="age-card" href="#/shop?age=${a.key}"><span class="em" aria-hidden="true">${a.em}</span><b>${a.label}</b><span>اكتشفي الملابس المناسبة</span></a>`).join("")}</div></div></section>
   <section class="block alt"><div class="container why">
@@ -265,17 +264,14 @@ function Favorites(){
   return PageHead("المفضلة","المنتجات اللي حفظتيها للرجوع إليها لاحقًا.")+`<div class="container" style="padding:30px 0"><div class="prod-grid">${l.length?l.map(ProductCard).join(""):Empty("لسه ما أضفتيش منتجات للمفضلة. تصفحي الأقسام واضغطي على القلب للحفظ.",true)}</div></div>`;
 }
 function About(){
-  const imgs=D.products.filter(p=>p.images&&p.images[0]).slice(0,3);
-  const tiles=imgs.map((p,k)=>`<figure class="ab-tile t${k+1}"><img src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy"></figure>`).join("");
-  const art=imgs.length?`<div class="ab-art n${imgs.length}" aria-hidden="false">${tiles}<span class="ab-cherry" aria-hidden="true">${cherry(64)}</span></div>`
-    :`<div class="ab-art empty" aria-hidden="true">${cherry(160)}</div>`;
   return `<section class="about"><div class="container ab-grid">
     <div class="ab-text">
       <span class="ab-eyebrow">من نحن</span>
       <h1>حلاوة طفولتهم.. في كل تفصيلة 🍒</h1>
       <p>في كرز، بنحب التفاصيل الصغيرة اللي بتخلي طفولة أولادنا أجمل. علشان كده، بنجمع لكِ اختيارات متنوعة من ملابس البنات والأولاد والبيبي، لتختاري لطفلك إطلالة تناسب ذوقك واحتياجاته بسهولة.</p>
       <a class="btn btn-primary ab-btn" href="#/shop">تصفحي المنتجات <span aria-hidden="true">←</span></a>
-    </div>${art}
+    </div>
+    <figure class="ab-art"><img src="images/site/about.webp" alt="ملابس أطفال متنوعة: فستان وتيشيرت وسالوبيت وأحذية وقبعة" width="1200" height="900"><span class="ab-cherry" aria-hidden="true">${cherry(64)}</span></figure>
   </div></section>`;
 }
 function Contact(){
