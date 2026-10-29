@@ -1,9 +1,10 @@
 window.KARAZ_PRODUCTS = [
   {
     "id": "alsayad-giraffe-fleece-set",
+    "code": "b007",
     "name": "بيجامة صوف ناعم بطبعة الزرافة للأولاد — الصياد",
-    "category": "baby",
-    "sub": "بيجامات",
+    "category": "boys",
+    "sub": "بيجامات وملابس نوم",
     "type": "بيجامة",
     "ages": [
       "0-12m",
@@ -37,10 +38,11 @@ window.KARAZ_PRODUCTS = [
     "season": "winter",
     "hidden": false,
     "rating": 4.1,
-    "url": "products/baby/alsayad-giraffe-fleece-set.html"
+    "url": "products/boys/alsayad-giraffe-fleece-set.html"
   },
   {
     "id": "andora-offshoulder-dress",
+    "code": "g001",
     "name": "فستان بناتي أوف شولدر بنقشة أسود وأبيض — أندورا",
     "category": "girls",
     "sub": "فساتين",

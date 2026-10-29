@@ -175,3 +175,5 @@ footer a{color:var(--petrol);font-weight:700;text-decoration:underline}
 @media(max-width:860px){.sim{grid-template-columns:repeat(2,1fr);gap:12px}}
 
 .gal.single{grid-template-columns:1fr}
+
+.pcode{display:block;font-family:'Cairo';font-weight:700;font-size:.9rem;color:var(--muted);margin:2px 0 10px;direction:rtl}

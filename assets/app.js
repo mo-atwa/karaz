@@ -72,7 +72,7 @@ function Header(){
       </div>
     </div>
     <div class="search-bar" id="searchBar"><div class="container">
-      <form id="searchForm" role="search"><input type="search" id="searchInput" placeholder="ابحثي باسم المنتج أو النوع أو القسم" aria-label="بحث عن المنتجات"><button class="btn btn-primary" type="submit">بحث</button></form>
+      <form id="searchForm" role="search"><input type="search" id="searchInput" placeholder="ابحثي باسم المنتج أو كوده أو القسم" aria-label="بحث عن المنتجات"><button class="btn btn-primary" type="submit">بحث</button></form>
     </div></div>
   </header>
   <div class="drawer-bg" id="drawerBg"></div>
@@ -124,7 +124,7 @@ function ProductCard(p){
     ${hasOffer(p)?`<span class="tag-off">خصم ${offPct(p)}٪</span>`:''}
     <button class="fav" data-fav="${esc(p.id)}" aria-pressed="${isFav}" aria-label="إضافة ${esc(p.name)} إلى المفضلة">${ICON.heart}</button>
     <div class="prod-body">
-      <span class="prod-cat">${catShort(p.category)}</span>
+      <span class="prod-cat">${catShort(p.category)}${p.code?` · <span class="prod-code">${esc(p.code)}</span>`:""}</span>
       <h3><a href="${esc(p.url||"#/shop")}">${esc(p.name)}</a></h3>
       ${meta?`<span class="prod-meta">${esc(meta)}</span>`:''}
       ${p.rating?`<span class="stars" aria-label="التقييم ${p.rating} من 5">${"★".repeat(Math.round(p.rating))}</span>`:''}
@@ -225,7 +225,7 @@ function filterProducts(q){
   if(q.offers) l=l.filter(hasOffer);
   if(q.sets) l=l.filter(p=>p.set);
   if(q.season) l=l.filter(p=>p.season);
-  if(q.q){ const t=q.q.trim().toLowerCase(); l=l.filter(p=>[p.name,p.type,p.sub,catName(p.category),p.description].join(" ").toLowerCase().includes(t)); }
+  if(q.q){ const t=q.q.trim().toLowerCase(); l=l.filter(p=>[p.name,p.code,p.type,p.sub,catName(p.category),p.description].join(" ").toLowerCase().includes(t)); }
   if(q.sort==="new") l.sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0));
   return l;
 }
@@ -244,7 +244,7 @@ function Shop(q){
     <div><button class="btn btn-ghost btn-sm filter-toggle" id="filterToggle" aria-expanded="false">تصفية النتائج</button>
     <form class="filters" id="filters" aria-label="فلاتر المنتجات">
       <h3>تصفية النتائج</h3>
-      <div class="f-group"><label class="t" for="f_q">بحث</label><input type="text" id="f_q" value="${esc(q.q||"")}" placeholder="اسم المنتج أو نوعه"></div>
+      <div class="f-group"><label class="t" for="f_q">بحث</label><input type="text" id="f_q" value="${esc(q.q||"")}" placeholder="اسم المنتج أو كوده"></div>
       ${sel("f_cat","القسم",Object.entries(CATS).map(([k,v])=>({v:k,t:v.name})),q.cat)}
       ${sel("f_age","العمر",AGES.map(a=>({v:a.key,t:a.label})),q.age)}
       ${sel("f_size","المقاس",uniq("sizes",true).map(v=>({v,t:v})),q.size)}

@@ -319,3 +319,5 @@ footer.site-footer{background:#F1F4E6;border-top:1px solid var(--green-soft);pad
   .container>.chips::-webkit-scrollbar{display:none}
   .container>.chips .chip{flex:0 0 auto;white-space:nowrap;scroll-snap-align:start}
 }
+
+.prod-code{color:var(--muted);font-weight:600;direction:ltr;unicode-bidi:embed}

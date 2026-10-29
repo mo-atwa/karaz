@@ -107,7 +107,7 @@ def build(spec):
     similar = ('<section class="blk" id="similar" hidden><div class="head"><h2>منتجات مشابهة قد تعجبك</h2></div>'
                '<div class="sim" id="simGrid"></div></section>')
 
-    meta = {"id": slug, "name": name, "category": cat, "sub": spec.get("sub", ""), "type": spec.get("type", ""),
+    meta = {"id": slug, "code": spec.get("code", ""), "name": name, "category": cat, "sub": spec.get("sub", ""), "type": spec.get("type", ""),
             "ages": spec.get("ages", []), "sizes": spec.get("sizes", []), "colors": [c["name"] for c in spec.get("colors", [])],
             "price": None, "oldPrice": None, "images": [m["path"] for m in imgs],
             "description": spec.get("description", spec.get("lead", "")), "material": spec.get("material", ""),
@@ -150,6 +150,7 @@ def build(spec):
   <section class="hero" aria-labelledby="t">
     <div>
       <span class="eyebrow">{e(CATS[cat])}{" · " + e(spec["sub"]) if spec.get("sub") else ""}</span>
+      {f'<span class="pcode">كود المنتج: {e(spec["code"])}</span>' if spec.get("code") else ""}
       {ratehtml}
       <h1 id="t">{h1}</h1>
       <p class="lead">{e(spec.get("lead", ""))}</p>
