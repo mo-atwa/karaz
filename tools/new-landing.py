@@ -101,7 +101,9 @@ def build(spec):
             f'<p>بناءً على {rate["count"]} تقييمات عالمية</p><div class="bars" aria-label="توزيع التقييمات">{bars}</div></div><div class="quotes">{qs}</div></div>'
             f'<p class="src">{e(rate.get("source","المصدر: صفحة المنتج على أمازون مصر. قد تتغير التقييمات، وتجدين أحدثها عند فتح المنتج."))}</p>')
 
-    faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in spec.get("faq", []))
+    base_faq = list(spec.get("faq", []))
+    base_faq.append(["من يتولى الدفع والشحن؟", "عملية الدفع والشحن تتم على أمازون وفق سياساتها. كرز يعرض المنتج ويحوّلك إلى صفحته الصحيحة هناك."])
+    faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in base_faq)
     faq = sec("أسئلة قبل الشراء", "", f'<div class="faq">{faq}</div>') if faq else ""
 
     similar = ('<section class="blk" id="similar" hidden><div class="head"><h2>منتجات مشابهة قد تعجبك</h2></div>'
@@ -119,7 +121,7 @@ def build(spec):
 
     t, tem, tr = spec.get("title", name), spec.get("title_em", ""), spec.get("title_rest", "")
     h1 = f'{e(t)} <em>{e(tem)}</em> {e(tr)}'.replace("<em></em>", "").strip() if tem else e(name)
-    ages_note = spec.get("buy_note", "تظهر تفاصيل السعر والدفع والتوصيل على أمازون، وتخضع لسياساتها.")
+    ages_note = spec.get("buy_note", "سيتم تحويلك إلى أمازون لإتمام الطلب. تظهر تفاصيل السعر والدفع والتوصيل هناك، وتخضع لسياسات أمازون.")
     colorsblock = colors
     return f'''<!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -142,7 +144,7 @@ def build(spec):
       <span>كرز Karaz<small>حلاوة طفولتهم.. في كل تفصيلة</small></span></a>
     <div class="top-tools">
       <a class="hicon" href="../../index.html#/favorites" aria-label="المفضلة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span class="hbadge" id="favBadge" hidden>0</span></a>
-      <a class="btn buy" {buy}>اطلب الآن</a>
+      <a class="btn buy" {buy}>اطلب الآن من أمازون</a>
     </div>
   </header>
 
@@ -154,10 +156,10 @@ def build(spec):
       {ratehtml}
       <h1 id="t">{h1}</h1>
       <p class="lead">{e(spec.get("lead", ""))}</p>
-      {f'<div class="sizes"><b>المقاسات المتاحة</b><div class="chips">{sizes}</div></div>' if sizes else ""}
+      {f'<div class="sizes"><b>المقاسات المتاحة</b><div class="chips">{sizes}</div><small class="hint">تختارين المقاس نفسه عند الطلب على أمازون.</small></div>' if sizes else ""}
       {colorsblock}
       <div class="cta-row">
-        <a class="btn buy" {buy}>اطلب الآن</a>
+        <a class="btn buy" {buy}>اطلب الآن من أمازون</a>
         <button class="favbtn" id="favBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span>أضيفي للمفضلة</span></button>
       </div>
       <p class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span>{e(ages_note)}</span></p>
@@ -177,8 +179,8 @@ def build(spec):
   {similar}
   <section class="final">
     <h2>{e(spec.get("final_title", "جاهزة تختاري لطفلتك إطلالتها الجديدة؟"))}</h2>
-    <p>{e(spec.get("final_text", "اطلبي الآن وتابعي التفاصيل والتوصيل على أمازون."))}</p>
-    <a class="btn buy" {buy}>اطلب الآن</a>
+    <p>{e(spec.get("final_text", "اضغطي على الزر لتنتقلي إلى أمازون وتختاري المقاس وتكملي الطلب."))}</p>
+    <a class="btn buy" {buy}>اطلب الآن من أمازون</a>
   </section>
   </main>
 
@@ -188,7 +190,7 @@ def build(spec):
   </footer>
 </div>
 
-<div class="sticky"><a class="btn buy" {buy}>اطلب الآن</a></div>
+<div class="sticky"><a class="btn buy" {buy}>اطلب الآن من أمازون</a></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <!-- بيانات المنتج: يقرأها الموقع تلقائيًا لعرض المنتج في قسمه. لا تحذفي هذا الجزء. -->

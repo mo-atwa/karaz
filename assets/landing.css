@@ -35,8 +35,8 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
 .hero{display:grid;grid-template-columns:1.02fr 1fr;gap:clamp(20px,4vw,56px);align-items:center;padding-block:18px 56px}
 .gal{display:grid;grid-template-columns:78px 1fr;gap:12px;min-width:0}
 .thumbs{display:flex;flex-direction:column;gap:10px}
-.thumbs button{border-radius:16px;overflow:hidden;border:2px solid var(--line);background:#fff;aspect-ratio:3/4;padding:0;transition:.2s}
-.thumbs button img{width:100%;height:100%;object-fit:cover;object-position:top}
+.thumbs button{position:relative;border-radius:16px;overflow:hidden;border:2px solid var(--line);background:#fff;aspect-ratio:3/4;padding:0;transition:.2s}
+.thumbs button img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:3px}
 .thumbs button[aria-current="true"]{border-color:var(--petrol);box-shadow:0 0 0 3px var(--green-soft)}
 .stage{position:relative;border-radius:30px;background:#fff;border:1px solid var(--line);aspect-ratio:4/5.4;overflow:hidden;box-shadow:var(--shadow);display:grid;place-items:center}
 .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:10px;transition:opacity .25s}
@@ -165,8 +165,8 @@ footer a{color:var(--petrol);font-weight:700;text-decoration:underline}
 .sim{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .sc{display:flex;flex-direction:column;background:var(--warm);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:.2s}
 .sc:hover{transform:translateY(-4px)}
-.sc .im{aspect-ratio:3/4;background:#fff;display:block}
-.sc .im img{width:100%;height:100%;object-fit:cover;object-position:top}
+.sc .im{position:relative;aspect-ratio:3/4;background:#fff;display:block;border-bottom:1px solid var(--line)}
+.sc .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:4px}
 .sc .tx{padding:12px 14px 16px;display:grid;gap:2px}
 .sc b{font-family:'Cairo';color:var(--petrol);font-size:.98rem;line-height:1.5}
 .sc .tx span{font-size:.85rem;color:var(--green);font-weight:700}
@@ -177,3 +177,7 @@ footer a{color:var(--petrol);font-weight:700;text-decoration:underline}
 .gal.single{grid-template-columns:1fr}
 
 .pcode{display:block;font-family:'Cairo';font-weight:700;font-size:.9rem;color:var(--muted);margin:2px 0 10px;direction:rtl}
+.sizes .hint{display:block;margin-top:6px;color:var(--muted);font-size:.86rem}
+.top .btn,.sticky .btn,.final .btn{white-space:nowrap}
+@media(max-width:860px){.sticky .btn{font-size:1rem}}
+.hbadge[hidden]{display:none}
