@@ -1,7 +1,7 @@
 window.KARAZ_PRODUCTS = [
   {
     "id": "gingham-crop-top-ruffle-shorts-set",
-    "code": "g002",
+    "code": "g003",
     "name": "طقم بلوزة قصيرة وشورت كاروهات قطني للبنات",
     "category": "girls",
     "sub": "أطقم بناتي",
@@ -27,7 +27,8 @@ window.KARAZ_PRODUCTS = [
       "images/gingham-crop-top-ruffle-shorts-set/1.webp",
       "images/gingham-crop-top-ruffle-shorts-set/2.webp",
       "images/gingham-crop-top-ruffle-shorts-set/3.webp",
-      "images/gingham-crop-top-ruffle-shorts-set/4.webp"
+      "images/gingham-crop-top-ruffle-shorts-set/4.webp",
+      "images/gingham-crop-top-ruffle-shorts-set/5.webp"
     ],
     "description": "طقم من قطعتين: بلوزة قصيرة بحمالات رفيعة وشورت قطني عالي الخصر بنقشة كاروهات وكشكشة عند الأطراف وحزام للربط. خفيف ومريح للأيام الحارة.",
     "material": "مزيج قطني ناعم",
