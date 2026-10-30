@@ -7,6 +7,7 @@
 """
 import json, sys, html, os
 from pathlib import Path
+import hashlib
 from PIL import Image
 
 SITE = Path(__file__).resolve().parent.parent
@@ -46,8 +47,10 @@ def build(spec):
         im = Image.open(src).convert("RGB")
         s = min(1, 1100 / max(im.size)); 
         if s < 1: im = im.resize((round(im.width * s), round(im.height * s)))
-        out = imgdir / f"{i}.webp"; im.save(out, "WEBP", quality=86)
-        imgs.append({"path": f"images/{slug}/{i}.webp", "w": im.width, "h": im.height,
+        tmp = imgdir / f"_{i}.tmp.webp"; im.save(tmp, "WEBP", quality=86)
+        h = hashlib.md5(tmp.read_bytes()).hexdigest()[:8]   # اسم مرتبط بالمحتوى لتفادي الكاش القديم
+        out = imgdir / f"{i}-{h}.webp"; tmp.replace(out)
+        imgs.append({"path": f"images/{slug}/{i}-{h}.webp", "w": im.width, "h": im.height,
                      "alt": it.get("alt", name), "caption": it.get("caption", "")})
 
     def sec(title, sub, body, sid="", label=""):

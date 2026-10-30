@@ -30,8 +30,6 @@ window.KARAZ_CATEGORIES = {
     subs:["ملابس حديثي الولادة","سالوبيت ورومبير","أطقم البيبي","بودي وملابس داخلية","بيجامات","ملابس خروج"] }
 };
 window.KARAZ_EXTRA = [
-  { key:"season", name:"ملابس الموسم", tagline:"اختيارات مناسبة لكل طقس.", cta:"تسوّقي ملابس الموسم", bg:"#fbf6f0", image:"images/site/cat-season.webp", href:"#/shop?season=1",
-    subs:["ملابس صيفية","ملابس شتوية","جاكيتات","سويت شيرت","ملابس خفيفة للربيع"] },
   { key:"sets", name:"الأطقم المتكاملة", tagline:"إطلالة متناسقة بكل سهولة.", cta:"اكتشفي الأطقم", bg:"#e5dfef", image:"images/site/cat-sets.webp", href:"#/shop?sets=1",
     subs:["أطقم البنات","أطقم الأولاد","أطقم البيبي"] },
   { key:"offers", name:"العروض والخصومات", tagline:"اختيارات حلوة بأسعار مميزة.", cta:"اكتشفي العروض", bg:"#dae1ce", image:"images/site/cat-offers.webp", href:"#/shop?offers=1", subs:[] }

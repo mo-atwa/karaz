@@ -33,7 +33,7 @@ const garment = (kind,c1="#E9A6A0",c2="#fff")=>{
 };
 const catArt = k => ({
   girls:garment("dress","#E9A6A0"), boys:garment("tee","#1F4E5F","#B7CFA1"), baby:garment("romper","#B7CFA1","#FFF9F0"),
-  season:garment("star","#E0A43A"), sets:garment("dress","#C79AB5"), offers:cherry(70)
+  sets:garment("dress","#C79AB5"), offers:cherry(70)
 }[k]||garment("tee"));
 const logoMark = `<svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="#FFF9F0" stroke="#B7CFA1" stroke-width="2"/><path d="M33 14c-3 8-8 16-11 25M33 14c2 8 6 16 11 25" stroke="#6BA86B" stroke-width="2.600" fill="none" stroke-linecap="round"/><path d="M33 14c6-5 14-3 17 2-6 1-12 1-17-2z" fill="#6BA86B"/><circle cx="21" cy="44" r="9" fill="#E9A6A0"/><circle cx="44" cy="42" r="9" fill="#d98981"/></svg>`;
 
@@ -103,7 +103,7 @@ function Footer(){
         ${aff?'<p class="disclosure">بعض الروابط في الموقع هي روابط عمولة؛ قد نحصل على عمولة عند الشراء عبرها دون أي تكلفة إضافية عليكِ.</p>':''}</div>
       <div><h4>تسوّقي</h4><ul>
         <li><a href="#/shop?cat=girls">ملابس البنات</a></li><li><a href="#/shop?cat=boys">ملابس الأولاد</a></li>
-        <li><a href="#/shop?cat=baby">ملابس البيبي</a></li><li><a href="#/shop?season=1">ملابس الموسم</a></li>
+        <li><a href="#/shop?cat=baby">ملابس البيبي</a></li>
         <li><a href="#/shop?offers=1">العروض والخصومات</a></li></ul></div>
       <div><h4>معلومات</h4><ul>
         <li><a href="#/about">من نحن</a></li><li><a href="#/contact">تواصل معنا</a></li>
@@ -231,7 +231,6 @@ function filterProducts(q){
   if(q.max) l=l.filter(p=>p.price!=null&&p.price<=+q.max);
   if(q.offers) l=l.filter(hasOffer);
   if(q.sets) l=l.filter(p=>p.set);
-  if(q.season) l=l.filter(p=>p.season);
   if(q.q){ const t=q.q.trim().toLowerCase(); l=l.filter(p=>[p.name,p.code,p.type,p.sub,catName(p.category),p.description].join(" ").toLowerCase().includes(t)); }
   if(q.sort==="new") l.sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0));
   return l;
@@ -239,7 +238,7 @@ function filterProducts(q){
 const uniq = (key,flat) => [...new Set(D.products.flatMap(p=>flat?(p[key]||[]):[p[key]]).filter(Boolean))];
 function Shop(q){
   const c = CATS[q.cat];
-  let title = q.offers?"العروض والخصومات":q.sets?"الأطقم المتكاملة":q.season?"ملابس الموسم":q.q?`نتائج البحث عن «${esc(q.q)}»`:c?c.name:"كل المنتجات";
+  let title = q.offers?"العروض والخصومات":q.sets?"الأطقم المتكاملة":q.q?`نتائج البحث عن «${esc(q.q)}»`:c?c.name:"كل المنتجات";
   if(q.sub) title += " — "+esc(q.sub);
   const ageL = (AGES.find(a=>a.key===q.age)||{}).label;
   if(ageL) title = "ملابس "+ageL;

@@ -24,11 +24,11 @@ window.KARAZ_PRODUCTS = [
     "price": null,
     "oldPrice": null,
     "images": [
-      "images/gingham-crop-top-ruffle-shorts-set/1.webp",
-      "images/gingham-crop-top-ruffle-shorts-set/2.webp",
-      "images/gingham-crop-top-ruffle-shorts-set/3.webp",
-      "images/gingham-crop-top-ruffle-shorts-set/4.webp",
-      "images/gingham-crop-top-ruffle-shorts-set/5.webp"
+      "images/gingham-crop-top-ruffle-shorts-set/1-c1830dbc.webp",
+      "images/gingham-crop-top-ruffle-shorts-set/2-12267521.webp",
+      "images/gingham-crop-top-ruffle-shorts-set/3-1536149c.webp",
+      "images/gingham-crop-top-ruffle-shorts-set/4-d4b3ccc3.webp",
+      "images/gingham-crop-top-ruffle-shorts-set/5-8a453111.webp"
     ],
     "description": "طقم من قطعتين: بلوزة قصيرة بحمالات رفيعة وشورت قطني عالي الخصر بنقشة كاروهات وكشكشة عند الأطراف وحزام للربط. خفيف ومريح للأيام الحارة.",
     "material": "مزيج قطني ناعم",
