@@ -1,5 +1,46 @@
 window.KARAZ_PRODUCTS = [
   {
+    "id": "alsayad-giraffe-fleece-set",
+    "code": "b007",
+    "name": "بيجامة صوف ناعم بطبعة الزرافة للأولاد — الصياد",
+    "category": "boys",
+    "sub": "بيجامات وملابس نوم",
+    "type": "بيجامة",
+    "ages": [
+      "0-12m",
+      "1-2y",
+      "3-5y"
+    ],
+    "sizes": [
+      "0–3 شهور",
+      "3–6 شهور",
+      "6–9 شهور",
+      "9–12 شهر",
+      "12–18 شهر",
+      "سنتان",
+      "3 سنوات"
+    ],
+    "colors": [
+      "أخضر"
+    ],
+    "price": null,
+    "oldPrice": null,
+    "images": [
+      "images/alsayad-giraffe-fleece-set/1.webp"
+    ],
+    "description": "طقم بيجامة من الصياد بهودي بسوستة نصفية وجيب أمامي وبنطلون بنقشة أوراق، مع طبعة زرافة لطيفة على الصدر. بخامة 60% قطن و40% بوليستر.",
+    "material": "60% قطن، 40% بوليستر",
+    "buyType": "affiliate",
+    "buyUrl": "https://link.amazon/B0dvgXfFg",
+    "createdAt": "2026-10-25",
+    "featured": true,
+    "set": false,
+    "season": "winter",
+    "hidden": false,
+    "rating": 4.1,
+    "url": "products/boys/alsayad-giraffe-fleece-set.html"
+  },
+  {
     "id": "andora-offshoulder-dress",
     "code": "g001",
     "name": "فستان بناتي أوف شولدر بنقشة أسود وأبيض — أندورا",
