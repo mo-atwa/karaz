@@ -42,6 +42,42 @@ window.KARAZ_PRODUCTS = [
     "url": "products/girls/gingham-crop-top-ruffle-shorts-set.html"
   },
   {
+    "id": "baby-shora-two-pack-long-sleeve-tops",
+    "code": "c004",
+    "name": "طقم فانلتين بأكمام طويلة وطبعة أشكال للبيبي — بيبي شورا",
+    "category": "baby",
+    "sub": "بودي وملابس داخلية",
+    "type": "فانلة",
+    "ages": [
+      "1-2y"
+    ],
+    "sizes": [
+      "18–24 شهرًا"
+    ],
+    "colors": [
+      "أبيض وأزرق"
+    ],
+    "price": null,
+    "oldPrice": null,
+    "images": [
+      "images/baby-shora-two-pack-long-sleeve-tops/1-d1b80ff2.webp",
+      "images/baby-shora-two-pack-long-sleeve-tops/2-6f79f30e.webp",
+      "images/baby-shora-two-pack-long-sleeve-tops/3-60f227c4.webp",
+      "images/baby-shora-two-pack-long-sleeve-tops/4-3e408246.webp"
+    ],
+    "description": "طقم من فانلتين بأكمام طويلة من بيبي شورا: واحدة بيضاء بطبعة «Milk Poop Nap Repeat» وأخرى زرقاء بطبعة أشكال لطيفة. قطن، صنع في مصر.",
+    "material": "قطن",
+    "buyType": "affiliate",
+    "buyUrl": "https://link.amazon/B0j8szk7e",
+    "createdAt": "2026-10-30",
+    "featured": false,
+    "set": false,
+    "season": "",
+    "hidden": false,
+    "rating": 3.9,
+    "url": "products/baby/baby-shora-two-pack-long-sleeve-tops.html"
+  },
+  {
     "id": "alsayad-giraffe-fleece-set",
     "code": "b007",
     "name": "بيجامة صوف ناعم بطبعة الزرافة للأولاد — الصياد",
