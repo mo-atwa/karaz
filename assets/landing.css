@@ -181,3 +181,5 @@ footer a{color:var(--petrol);font-weight:700;text-decoration:underline}
 .top .btn,.sticky .btn,.final .btn{white-space:nowrap}
 @media(max-width:860px){.sticky .btn{font-size:1rem}}
 .hbadge[hidden]{display:none}
+
+.colors{flex-wrap:wrap}.colors .cl{display:inline-flex;align-items:center;gap:6px;margin-inline-end:10px}

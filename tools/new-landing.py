@@ -56,10 +56,11 @@ def build(spec):
 
     # مقاسات وألوان
     sizes = "".join(f'<span class="chip">{e(s)}</span>' for s in spec.get("sizes", []))
-    colors = ""
+    colors = ""; items = ""
     for c in spec.get("colors", []):
         sw = f'<span class="sw" style="background:{e(c["swatch"])}" aria-hidden="true"></span>' if c.get("swatch") else ""
-        colors += f'<div class="colors"><b>اللون:</b>{sw}<span>{e(c["name"])}</span></div>'
+        items += f'<span class="cl">{sw}<span>{e(c["name"])}</span></span>'
+    if items: colors = f'<div class="colors"><b>{"الألوان" if len(spec.get("colors", [])) > 1 else "اللون"}:</b>{items}</div>'
     single = len(imgs) == 1
     thumbs = "" if single else "".join(
         f'<button type="button" data-src="../../{m["path"]}" data-alt="{e(m["alt"])}" {"aria-current=%strue%s" % (chr(34),chr(34)) if i==0 else ""} aria-label="صورة {i+1}"><img src="../../{m["path"]}" alt=""></button>'

@@ -1,5 +1,46 @@
 window.KARAZ_PRODUCTS = [
   {
+    "id": "gingham-crop-top-ruffle-shorts-set",
+    "code": "g002",
+    "name": "طقم بلوزة قصيرة وشورت كاروهات قطني للبنات",
+    "category": "girls",
+    "sub": "أطقم بناتي",
+    "type": "طقم",
+    "ages": [
+      "1-2y",
+      "3-5y",
+      "6-8y"
+    ],
+    "sizes": [
+      "2",
+      "4",
+      "6",
+      "8"
+    ],
+    "colors": [
+      "زهري",
+      "أخضر"
+    ],
+    "price": null,
+    "oldPrice": null,
+    "images": [
+      "images/gingham-crop-top-ruffle-shorts-set/1.webp",
+      "images/gingham-crop-top-ruffle-shorts-set/2.webp",
+      "images/gingham-crop-top-ruffle-shorts-set/3.webp",
+      "images/gingham-crop-top-ruffle-shorts-set/4.webp"
+    ],
+    "description": "طقم من قطعتين: بلوزة قصيرة بحمالات رفيعة وشورت قطني عالي الخصر بنقشة كاروهات وكشكشة عند الأطراف وحزام للربط. خفيف ومريح للأيام الحارة.",
+    "material": "مزيج قطني ناعم",
+    "buyType": "affiliate",
+    "buyUrl": "https://link.amazon/B09FU4Xxp",
+    "createdAt": "2026-10-30",
+    "featured": false,
+    "set": true,
+    "season": "summer",
+    "hidden": false,
+    "url": "products/girls/gingham-crop-top-ruffle-shorts-set.html"
+  },
+  {
     "id": "alsayad-giraffe-fleece-set",
     "code": "b007",
     "name": "بيجامة صوف ناعم بطبعة الزرافة للأولاد — الصياد",
