@@ -1,7 +1,7 @@
 window.KARAZ_PRODUCTS = [
   {
     "id": "cotton-baby-girl-romper-1402",
-    "code": "g004",
+    "code": "c005",
     "name": "سالوبيت قطن للبنات البيبي 1402",
     "category": "baby",
     "sub": "سالوبيت ورومبير",
