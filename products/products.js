@@ -1,5 +1,43 @@
 window.KARAZ_PRODUCTS = [
   {
+    "id": "cotton-baby-girl-romper-1402",
+    "code": "g004",
+    "name": "سالوبيت قطن للبنات البيبي 1402",
+    "category": "baby",
+    "sub": "سالوبيت ورومبير",
+    "type": "سالوبيت",
+    "ages": [
+      "0-12m"
+    ],
+    "sizes": [
+      "0–3 شهور",
+      "3–6 شهور"
+    ],
+    "colors": [
+      "برتقالي",
+      "وردي فاتح",
+      "أزرق سماوي"
+    ],
+    "price": null,
+    "oldPrice": null,
+    "images": [
+      "images/cotton-baby-girl-romper-1402/1-a12535fb.webp",
+      "images/cotton-baby-girl-romper-1402/2-50ac0d46.webp",
+      "images/cotton-baby-girl-romper-1402/3-47fceb9a.webp",
+      "images/cotton-baby-girl-romper-1402/4-25b7856e.webp"
+    ],
+    "description": "سالوبيت قطن للبنات البيبي بتصميم قطعتين شكلًا: بلوزة بيضاء بأكمام قصيرة وبنطلون قصير بحمالات مزيّنة بورود صغيرة. بإغلاق بأزرار، وصنع في مصر.",
+    "material": "قطن",
+    "buyType": "affiliate",
+    "buyUrl": "https://link.amazon/B01DSuPEH",
+    "createdAt": "2026-10-31",
+    "featured": false,
+    "set": false,
+    "season": "",
+    "hidden": false,
+    "url": "products/baby/cotton-baby-girl-romper-1402.html"
+  },
+  {
     "id": "gingham-crop-top-ruffle-shorts-set",
     "code": "g003",
     "name": "طقم بلوزة قصيرة وشورت كاروهات قطني للبنات",
