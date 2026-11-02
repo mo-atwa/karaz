@@ -1,5 +1,53 @@
 window.KARAZ_PRODUCTS = [
   {
+    "id": "mavriqo-milton-zip-jacket-pants-set",
+    "code": "b002",
+    "name": "ترنج أطفال شتوي ميلتون قطعتين للأولاد والبنات — MAVRIQO",
+    "category": "boys",
+    "sub": "أطقم أولادي",
+    "type": "ترنج",
+    "ages": [
+      "1-2y",
+      "3-5y"
+    ],
+    "sizes": [
+      "سنة",
+      "سنتان",
+      "3 سنوات",
+      "4 سنوات",
+      "5 سنوات"
+    ],
+    "colors": [
+      "بيج",
+      "نبيتي",
+      "بترولي"
+    ],
+    "price": null,
+    "oldPrice": null,
+    "images": [
+      "images/mavriqo-milton-zip-jacket-pants-set/1-c7433e03.webp",
+      "images/mavriqo-milton-zip-jacket-pants-set/2-05b39fcb.webp",
+      "images/mavriqo-milton-zip-jacket-pants-set/3-4a6a68cc.webp",
+      "images/mavriqo-milton-zip-jacket-pants-set/4-c1f3de57.webp",
+      "images/mavriqo-milton-zip-jacket-pants-set/5-eb3f9995.webp"
+    ],
+    "description": "ترنج شتوي من قطعتين: جاكيت بسوستة كاملة وياقة عالية وجيوب أمامية، وبنطلون بوسط مطاطي ورباط وأطراف مطاطية. من خامة الميلتون الدافئة، للأولاد والبنات من سنة إلى 5 سنوات. صنع في مصر.",
+    "material": "ميلتون",
+    "buyType": "affiliate",
+    "buyUrl": "https://link.amazon/B04Ca0rt3",
+    "createdAt": "2026-11-02",
+    "featured": true,
+    "set": true,
+    "season": "",
+    "hidden": false,
+    "alsoIn": {
+      "girls": "أطقم بناتي",
+      "baby": "أطقم البيبي"
+    },
+    "rating": 4.0,
+    "url": "products/boys/mavriqo-milton-zip-jacket-pants-set.html"
+  },
+  {
     "id": "cotton-baby-girl-romper-1402",
     "code": "c005",
     "name": "سالوبيت قطن للبنات البيبي 1402",

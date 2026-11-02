@@ -37,7 +37,7 @@ var all=window.KARAZ_PRODUCTS||[], sec=$("#similar"), grid=$("#simGrid");
 if(sec&&grid&&all.length){
   var me=all.filter(function(p){return p.id===id})[0]||P;
   var cat=me.category||P.category;
-  var rest=all.filter(function(p){return p.id!==id&&p.category===cat&&p.url});
+  var rest=all.filter(function(p){return p.id!==id&&(p.category===cat||Object.keys(p.alsoIn||{}).indexOf(cat)>-1)&&p.url});
   rest.sort(function(a,b){ return (b.sub===me.sub)-(a.sub===me.sub) || String(b.createdAt||"").localeCompare(String(a.createdAt||"")); });
   rest=rest.slice(0,4);
   if(rest.length){

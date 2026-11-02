@@ -71,7 +71,7 @@ def build(spec):
     rate = spec.get("rating")
     ratehtml = ""
     if rate:
-        ratehtml = f'<div class="rate"><span class="stars" aria-hidden="true">★★★★☆</span><span>تقييم {rate["value"]} من 5 على أمازون ({rate["count"]} تقييمات)</span></div>'
+        ratehtml = f'<div class="rate"><span class="stars" aria-hidden="true">★★★★☆</span><span>تقييم {rate["value"]} من 5 على أمازون ({"تقييم واحد" if rate["count"]==1 else str(rate["count"])+" تقييمات"})</span></div>'
 
     band = "".join(f'<div role="listitem"><b>{e(a)}</b><span>{e(b)}</span></div>' for a, b in spec.get("band", []))
     band = f'<div class="band" role="list">{band}</div>' if band else ""
@@ -121,6 +121,7 @@ def build(spec):
             "buyType": "affiliate", "buyUrl": url, "createdAt": spec.get("createdAt", ""),
             "featured": spec.get("featured", False), "set": spec.get("set", False), "season": spec.get("season", ""),
             "hidden": spec.get("hidden", False)}
+    if spec.get("also_in"): meta["alsoIn"] = spec["also_in"]
     if rate: meta["rating"] = rate["value"]
     metajson = json.dumps(meta, ensure_ascii=False, indent=2).replace("</", "<\\/")
 

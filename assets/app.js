@@ -6,6 +6,9 @@ const $ = (s,r=document)=>r.querySelector(s);
 const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const money = n => Number(n).toLocaleString("ar-EG")+" ج.م";
 const catName = k => (CATS[k]||{}).name || "";
+const alsoOf = p => Object.keys(p.alsoIn||{});
+const inCat = (p,c) => p.category===c || alsoOf(p).includes(c);
+const subIn = (p,c) => c&&c!==p.category&&p.alsoIn&&p.alsoIn[c] ? p.alsoIn[c] : p.sub;
 const catShort = k => ({girls:"بنات",boys:"أولاد",baby:"بيبي"}[k]||"");
 const hasOffer = p => p.oldPrice && p.price && p.oldPrice>p.price;
 const offPct = p => Math.round((1-p.price/p.oldPrice)*100);
@@ -124,7 +127,7 @@ function ProductCard(p){
     ${hasOffer(p)?`<span class="tag-off">خصم ${offPct(p)}٪</span>`:''}
     <button class="fav" data-fav="${esc(p.id)}" aria-pressed="${isFav}" aria-label="إضافة ${esc(p.name)} إلى المفضلة">${ICON.heart}</button>
     <div class="prod-body">
-      <span class="prod-cat">${catShort(p.category)}${p.code?` · <span class="prod-code">${esc(p.code)}</span>`:""}</span>
+      <span class="prod-cat">${[p.category,...alsoOf(p)].map(catShort).join(" · ")}${p.code?` · <span class="prod-code">${esc(p.code)}</span>`:""}</span>
       <h3><a href="${esc(p.url||"#/shop")}">${esc(p.name)}</a></h3>
       ${meta?`<span class="prod-meta">${esc(meta)}</span>`:''}
       ${p.rating?`<span class="stars" aria-label="التقييم ${p.rating} من 5">${"★".repeat(Math.round(p.rating))} <small>${p.rating}</small></span>`:''}
@@ -221,8 +224,8 @@ function FaqList(){ return `<div class="faq">${FAQ.map(f=>`<details><summary>${f
 function parseQS(h){ const q={}; const s=(h.split("?")[1]||""); s.split("&").forEach(p=>{ if(!p) return; const [k,v]=p.split("="); q[decodeURIComponent(k)]=decodeURIComponent((v||"").replace(/\+/g," ")); }); return q; }
 function filterProducts(q){
   let l=D.products.slice();
-  if(q.cat) l=l.filter(p=>p.category===q.cat);
-  if(q.sub) l=l.filter(p=>p.sub===q.sub);
+  if(q.cat) l=l.filter(p=>inCat(p,q.cat));
+  if(q.sub) l=l.filter(p=>subIn(p,q.cat)===q.sub);
   if(q.age) l=l.filter(p=>(p.ages||[]).includes(q.age));
   if(q.size) l=l.filter(p=>(p.sizes||[]).includes(q.size));
   if(q.color) l=l.filter(p=>(p.colors||[]).includes(q.color));
@@ -231,7 +234,7 @@ function filterProducts(q){
   if(q.max) l=l.filter(p=>p.price!=null&&p.price<=+q.max);
   if(q.offers) l=l.filter(hasOffer);
   if(q.sets) l=l.filter(p=>p.set);
-  if(q.q){ const t=q.q.trim().toLowerCase(); l=l.filter(p=>[p.name,p.code,p.type,p.sub,catName(p.category),p.description].join(" ").toLowerCase().includes(t)); }
+  if(q.q){ const t=q.q.trim().toLowerCase(); l=l.filter(p=>[p.name,p.code,p.type,p.sub,[p.category,...alsoOf(p)].map(catName).join(" "),p.description].join(" ").toLowerCase().includes(t)); }
   if(q.sort==="new") l.sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0));
   return l;
 }
