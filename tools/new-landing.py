@@ -168,7 +168,7 @@ def build(spec):
       <span>كرز Karaz<small>حلاوة طفولتهم.. في كل تفصيلة</small></span></a>
     <div class="top-tools">
       <a class="hicon" href="../../index.html#/favorites" aria-label="المفضلة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span class="hbadge" id="favBadge" hidden>0</span></a>
-      <a class="btn buy" {buy}>اطلب الآن من أمازون</a>
+      <a class="btn buy" {buy}>اطلب الآن</a>
     </div>
   </header>
 
@@ -183,7 +183,7 @@ def build(spec):
       {f'<div class="sizes"><b>المقاسات المتاحة</b><div class="chips">{sizes}</div><small class="hint">تختارين المقاس نفسه عند الطلب على أمازون.</small></div>' if sizes else ""}
       {colorsblock}
       <div class="cta-row">
-        <a class="btn buy" {buy}>اطلب الآن من أمازون</a>
+        <a class="btn buy" {buy}>اطلب الآن</a>
         <button class="favbtn" id="favBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span>أضيفي للمفضلة</span></button>
       </div>
       <p class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span>{e(ages_note)}</span></p>
@@ -204,7 +204,7 @@ def build(spec):
   <section class="final">
     <h2>{e(spec.get("final_title", "جاهزة تختاري لطفلتك إطلالتها الجديدة؟"))}</h2>
     <p>{e(spec.get("final_text", "اضغطي على الزر لتنتقلي إلى أمازون وتختاري المقاس وتكملي الطلب."))}</p>
-    <a class="btn buy" {buy}>اطلب الآن من أمازون</a>
+    <a class="btn buy" {buy}>اطلب الآن</a>
   </section>
   </main>
 
@@ -214,7 +214,7 @@ def build(spec):
   </footer>
 </div>
 
-<div class="sticky"><a class="btn buy" {buy}>اطلب الآن من أمازون</a></div>
+<div class="sticky"><a class="btn buy" {buy}>اطلب الآن</a></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <!-- بيانات المنتج: يقرأها الموقع تلقائيًا لعرض المنتج في قسمه. لا تحذفي هذا الجزء. -->
