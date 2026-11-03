@@ -223,6 +223,7 @@ def build(spec):
 </script>
 <script src="../../products/products.js"></script>
 <script src="../../assets/landing.js"></script>
+<script src="../../assets/totop.js" defer></script>
 </body>
 </html>
 ''', cat, slug
