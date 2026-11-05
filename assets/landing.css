@@ -183,3 +183,11 @@ footer a{color:var(--petrol);font-weight:700;text-decoration:underline}
 .hbadge[hidden]{display:none}
 
 .colors{flex-wrap:wrap}.colors .cl{display:inline-flex;align-items:center;gap:6px;margin-inline-end:10px}
+
+.pricenote{display:flex;align-items:center;gap:8px;margin:0 0 12px;padding:10px 14px;border-radius:14px;background:#EAF3E1;border:1px solid var(--green-soft);color:var(--petrol);font-family:'Cairo',sans-serif;font-weight:700;font-size:1rem;line-height:1.5}
+.pricenote svg{flex:0 0 20px;width:20px;height:20px;color:var(--green)}
+.final .pricenote{display:inline-flex;margin:0 auto 14px;background:#fff;text-align:start}
+.sticky{flex-direction:column;gap:6px}
+.sticky .pricenote{margin:0;padding:6px 10px;font-size:.88rem;border-radius:10px;justify-content:center}
+.sticky .pricenote svg{width:16px;height:16px;flex-basis:16px}
+@media(max-width:860px){.sticky .btn{flex:none;align-self:stretch;min-height:48px}.sticky .pricenote{align-self:stretch}.to-top.has-sticky{bottom:112px}}
